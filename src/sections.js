@@ -1,29 +1,10 @@
 import { h } from "picodom"
+import pages from "./pages.js"
+import ranges from "./ranges.js"
 
 const byId = {
-  pages: {
-    singular: "Page",
-    plural: "Pages",
-    focusable: true,
-    create(id, name) {
-      return {
-        id: id,
-        name: name
-      }
-    },
-    view: () => <div></div>
-  },
-  ranges: {
-    singular: "Range",
-    plural: "Ranges",
-    create(id, name) {
-      return {
-        id: id,
-        name: name
-      }
-    },
-    view: () => <div></div>
-  }
+  pages: pages,
+  ranges: ranges
 }
 
 export default {
