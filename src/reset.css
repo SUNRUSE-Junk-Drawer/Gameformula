@@ -55,6 +55,10 @@ html {
   background: #333;
 }
 
+::-webkit-scrollbar-corner { 
+  background: #080808; 
+}
+
 button::-moz-focus-inner {
   border: 0;
 }
