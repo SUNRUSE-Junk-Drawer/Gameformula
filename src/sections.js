@@ -1,7 +1,7 @@
 const byId = {
-  sheets: {
-    singular: "Sheet",
-    plural: "Sheets",
+  pages: {
+    singular: "Page",
+    plural: "Pages",
     create(id, name) {
       return {
         id: id,
@@ -23,5 +23,5 @@ const byId = {
 
 export default {
   byId: byId,
-  idsInOrder: ["sheets", "ranges"]
+  idsInOrder: ["pages", "ranges"]
 }
