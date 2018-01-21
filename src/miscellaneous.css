@@ -1,0 +1,25 @@
+.nothing-selected {
+  position: fixed;
+  left: 12.1rem;
+  right: 0;
+  top: 0;
+  bottom: 1.6rem;
+}
+
+.nothing-selected * {
+  position: absolute;
+  left: 0;
+  right: 0;
+  text-align: center;
+  line-height: 1.5rem;
+  color: #555;
+  white-space: normal;
+}
+
+.nothing-selected .first-line {
+  bottom: 50%;
+}
+
+.nothing-selected .second-line {
+  top: 50%;
+}

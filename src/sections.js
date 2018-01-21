@@ -1,3 +1,5 @@
+import { h } from "picodom"
+
 const byId = {
   pages: {
     singular: "Page",
@@ -8,7 +10,8 @@ const byId = {
         id: id,
         name: name
       }
-    }
+    },
+    view: () => <div></div>
   },
   ranges: {
     singular: "Range",
@@ -18,7 +21,8 @@ const byId = {
         id: id,
         name: name
       }
-    }
+    },
+    view: () => <div></div>
   }
 }
 
