@@ -5,8 +5,6 @@ import sections from "./sections.js"
 import file from "./file.js"
 
 export default () => <div>
-  {toolbar.view()}
-  {browser.view()}
   {
     file.current.focusedSection
       ? sections.byId[file.current.focusedSection].view()
@@ -15,4 +13,6 @@ export default () => <div>
         <div class="second-line">Please select an item from the browser on the left.</div>
       </div>
   }
+  {toolbar.view()}
+  {browser.view()}
 </div>
