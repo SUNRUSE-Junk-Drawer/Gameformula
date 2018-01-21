@@ -1,0 +1,110 @@
+#browser {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 1.6rem;
+  width: 12rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+  border-right: 0.1rem solid #111;
+  color: #CCC;
+}
+
+#browser .header {
+  clear: both;
+  height: 1.5rem;
+}
+
+#browser .header .icon {
+  float: left;
+  width: 1.5rem;
+  height: 1.5rem;
+  line-height: 1.5rem;
+  text-align: center;
+}
+
+#browser .header .name {
+  height: 1.5rem;
+  line-height: 1.5rem;
+  background: #111;
+}
+
+#browser .header .name:hover {
+  color: #FFF;
+  background: #181818;
+}
+
+#browser .header .name:active {
+  background: #222;
+}
+
+#browser .header .button {
+  float: right;
+  width: 1.5rem;
+  height: 1.5rem;
+  line-height: 1.5rem;
+  text-align: center;
+}
+
+#browser .header .button:hover {
+  color: #FFF;
+  background: #181818;
+}
+
+#browser .header .button:active {
+  background: #222;
+}
+
+#browser .item {
+  font-size: 0.8rem;
+  clear: both;
+}
+
+#browser .item .button {
+  float: right;
+  width: 1.2rem;
+  height: 1.2rem;
+  line-height: 1.2rem;
+  text-align: center;
+}
+
+#browser .item .button:first-child {
+  margin-right: 0.15rem;
+}
+
+#browser .item .button:hover {
+  color: #FFF;
+}
+
+#browser .item .button:active {
+  background: #222;
+}
+
+#browser .item .name {
+  height: 1.2rem;
+  line-height: 1.2rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+#browser .active.item .name, #browser .active.item:nth-child(even) .name {
+  background: #141414;
+  color: #FFF;
+}
+
+#browser .item:nth-child(even) .name {
+  background: #080808;
+}
+
+#browser .item .name:hover, #browser .active.item .name:hover {
+  background: #181818;
+  color: #FFF;
+}
+
+#browser .item .name:active, #browser .active.item .name:active {
+  background: #222;
+}
+
+#browser .item:hover .name:not(:hover) {
+  background: #111;
+}
