@@ -34,6 +34,16 @@ const exported = {
       exported.current[sectionId].items.pop()
     })
   },
+  deleteItem(sectionId, item) {
+    const index = exported.current[sectionId].items.indexOf(item)
+    history.add(() => {
+      exported.current[sectionId].items.splice(index, 1)
+      exported.current[sectionId].expanded = true
+    }, () => {
+      exported.current[sectionId].items.splice(index, 0, item)
+      exported.current[sectionId].expanded = true
+    })
+  },
   toggleSection(id) {
     exported.current[id].expanded = !exported.current[id].expanded
     refreshDom()

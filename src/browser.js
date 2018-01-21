@@ -19,7 +19,7 @@ export default {
       </div>
       {file.current[id].expanded && <div class="items">
         {file.current[id].items.map(item => <div class="item">
-          <div class="button">❌&#xFE0E;</div>
+          <div class="button" onclick={() => file.deleteItem(id, item)}>❌&#xFE0E;</div>
           <div class="button">🖉&#xFE0E;</div>
           <div class="name">{item.name}</div>
         </div>)}
