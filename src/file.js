@@ -8,6 +8,7 @@ function NewFile() {
   }
 
   sections.idsInOrder.forEach(id => file[id] = {
+    nextId: 1,
     expanded: true,
     items: []
   })
@@ -26,7 +27,9 @@ const exported = {
       number++
     }
 
-    const item = sections.byId[sectionId].create(name)
+    const item = sections.byId[sectionId].create(exported.current[sectionId].id, name)
+    exported.current[sectionId].id++
+
     history.add(() => {
       exported.current[sectionId].items.push(item)
       exported.current[sectionId].expanded = true

@@ -2,8 +2,9 @@ const byId = {
   sheets: {
     singular: "Sheet",
     plural: "Sheets",
-    create(name) {
+    create(id, name) {
       return {
+        id: id,
         name: name
       }
     }
@@ -11,8 +12,9 @@ const byId = {
   ranges: {
     singular: "Range",
     plural: "Ranges",
-    create(name) {
+    create(id, name) {
       return {
+        id: id,
         name: name
       }
     }
