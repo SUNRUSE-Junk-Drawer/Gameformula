@@ -8,6 +8,5 @@ export default {
       id: id,
       name: name
     }
-  },
-  view: () => <div></div>
+  }
 }
