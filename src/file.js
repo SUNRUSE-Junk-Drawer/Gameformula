@@ -27,14 +27,23 @@ const exported = {
       number++
     }
 
-    const item = sections.byId[sectionId].create(exported.current[sectionId].nextId, name)
+    const itemId = exported.current[sectionId].nextId
+    const item = sections.byId[sectionId].create(itemId, name)
     exported.current[sectionId].nextId++
 
     history.add(() => {
       exported.current[sectionId].items.push(item)
       exported.current[sectionId].expanded = true
+      if (sections.byId[sectionId].focusable) {
+        exported.current.focusedSection = sectionId
+        exported.current.focusedItem = itemId
+      }
     }, () => {
       exported.current[sectionId].items.pop()
+      if (exported.current.focusedSection == sectionId && exported.current.focusedItem == itemId) {
+        delete exported.current.focusedSection
+        delete exported.current.focusedItem
+      }
     })
   },
   deleteItem(sectionId, item) {
@@ -42,9 +51,17 @@ const exported = {
     history.add(() => {
       exported.current[sectionId].items.splice(index, 1)
       exported.current[sectionId].expanded = true
+      if (exported.current.focusedSection == sectionId && exported.current.focusedItem == item.id) {
+        delete exported.current.focusedSection
+        delete exported.current.focusedItem
+      }
     }, () => {
       exported.current[sectionId].items.splice(index, 0, item)
       exported.current[sectionId].expanded = true
+      if (sections.byId[sectionId].focusable) {
+        exported.current.focusedSection = sectionId
+        exported.current.focusedItem = item.id
+      }
     })
   },
   toggleSection(id) {
