@@ -1,3 +1,7 @@
+body {
+  margin-bottom: 1.6rem;
+}
+
 #toolbar {
   position: fixed;
   left: 0;
