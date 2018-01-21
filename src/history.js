@@ -11,7 +11,7 @@ export default {
       perform: perform,
       undo: undo
     })
-    step.perform()
+    perform()
     while (done.length > 20) done.shift()
     refreshDom()
   },
