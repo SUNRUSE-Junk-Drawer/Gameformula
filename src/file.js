@@ -16,6 +16,19 @@ const exported = {
   toggleSheets() {
     exported.current.sheets.expanded = !exported.current.sheets.expanded
     refreshDom()
+  },
+  createRange() {
+    const range = createNew.range(exported.current)
+    history.add(() => {
+      exported.current.ranges.items.push(range)
+      exported.current.ranges.expanded = true
+    }, () => {
+      exported.current.ranges.items.pop()
+    })
+  },
+  toggleRanges() {
+    exported.current.ranges.expanded = !exported.current.ranges.expanded
+    refreshDom()
   }
 }
 
