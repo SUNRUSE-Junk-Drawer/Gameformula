@@ -5,7 +5,7 @@ import file from "./file"
 
 export default {
   view: () => <div id="browser">
-    {sections.idsInOrder.map(id => <div class="section">
+    {sections.idsInOrder.map(id => <div class={"section" + (sections.byId[id].focusable ? " focusable" : "")}>
       <div class="header">
         <div class="button" onclick={() => file.createItem(id)}>＋&#xFE0E;</div>
         <div class="name" onclick={() => file.toggleSection(id)}>
