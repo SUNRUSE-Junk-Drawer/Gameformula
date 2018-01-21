@@ -1,33 +1,41 @@
-import createNew from "./createNew.js"
+import sections from "./sections"
 import refreshDom from "./refreshDom.js"
 import history from "./history"
 
+function NewFile() {
+  const file = {
+    name: "Untitled Sheet"
+  }
+
+  sections.idsInOrder.forEach(id => file[id] = {
+    expanded: true,
+    items: []
+  })
+
+  return file
+}
+
 const exported = {
-  current: createNew.file(),
-  createSheet() {
-    const sheet = createNew.sheet(exported.current)
+  current: NewFile(),
+  createItem(sectionId) {
+    let number = 1
+    let name
+    while (true) {
+      name = `Untitled ${sections.byId[sectionId].singular} ${number}`
+      if (!exported.current[sectionId].items.some(item => item.name == name)) break
+      number++
+    }
+
+    const item = sections.byId[sectionId].create(name)
     history.add(() => {
-      exported.current.sheets.items.push(sheet)
-      exported.current.sheets.expanded = true
+      exported.current[sectionId].items.push(item)
+      exported.current[sectionId].expanded = true
     }, () => {
-      exported.current.sheets.items.pop()
+      exported.current[sectionId].items.pop()
     })
   },
-  toggleSheets() {
-    exported.current.sheets.expanded = !exported.current.sheets.expanded
-    refreshDom()
-  },
-  createRange() {
-    const range = createNew.range(exported.current)
-    history.add(() => {
-      exported.current.ranges.items.push(range)
-      exported.current.ranges.expanded = true
-    }, () => {
-      exported.current.ranges.items.pop()
-    })
-  },
-  toggleRanges() {
-    exported.current.ranges.expanded = !exported.current.ranges.expanded
+  toggleSection(id) {
+    exported.current[id].expanded = !exported.current[id].expanded
     refreshDom()
   }
 }
