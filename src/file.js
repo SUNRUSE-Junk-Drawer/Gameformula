@@ -46,6 +46,11 @@ const exported = {
       }
     })
   },
+  focusItem(sectionId, item) {
+    exported.current.focusedSection = sectionId
+    exported.current.focusedItem = item.id
+    refreshDom()
+  },
   deleteItem(sectionId, item) {
     const index = exported.current[sectionId].items.indexOf(item)
     history.add(() => {
