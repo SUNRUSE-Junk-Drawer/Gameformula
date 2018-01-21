@@ -21,7 +21,7 @@ export default {
         {file.current[id].items.map(item => <div class={"item" + (file.current.focusedSection == id && file.current.focusedItem == item.id ? " focused" : "")}>
           <div class="button" onclick={() => file.deleteItem(id, item)}>❌&#xFE0E;</div>
           <div class="button">🖉&#xFE0E;</div>
-          <div class="name" onclick={() => file.focusItem(id, item)}>{item.name}</div>
+          <div class="name" onclick={sections.byId[id].focusable && (() => file.focusItem(id, item))}>{item.name}</div>
         </div>)}
       </div>}
     </div>)}
