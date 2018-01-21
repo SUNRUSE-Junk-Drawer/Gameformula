@@ -2,6 +2,7 @@ const byId = {
   pages: {
     singular: "Page",
     plural: "Pages",
+    focusable: true,
     create(id, name) {
       return {
         id: id,
