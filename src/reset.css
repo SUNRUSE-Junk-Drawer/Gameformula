@@ -51,3 +51,7 @@ html {
 button::-moz-focus-inner {
   border: 0;
 }
+
+.enabled.button {
+  cursor: pointer;
+}

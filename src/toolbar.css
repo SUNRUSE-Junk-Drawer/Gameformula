@@ -1,0 +1,33 @@
+#toolbar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #111;
+  padding-top: 0.1rem;
+}
+
+#toolbar .button {
+  float: left;
+  width: 1.5rem;
+  height: 1.5rem;
+  text-align: center;
+  line-height: 1.5rem;
+  margin-right: 0.1rem;
+  background: #181818;
+  color: #999;
+}
+
+#toolbar .enabled.button {
+  background: #222;
+  color: #CCC;
+}
+
+#toolbar .enabled.button:hover {
+  background: #282828;
+  color: #FFF;
+}
+
+#toolbar .enabled.button:active {
+  background: #333;
+}
