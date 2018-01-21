@@ -18,7 +18,7 @@ export default {
         </div>
       </div>
       {file.current[id].expanded && <div class="items">
-        {file.current[id].items.map(item => <div class="item">
+        {file.current[id].items.map(item => <div class={"item" + (file.current.focusedSection == id && file.current.focusedItem == item.id ? " focused" : "")}>
           <div class="button" onclick={() => file.deleteItem(id, item)}>❌&#xFE0E;</div>
           <div class="button">🖉&#xFE0E;</div>
           <div class="name">{item.name}</div>
