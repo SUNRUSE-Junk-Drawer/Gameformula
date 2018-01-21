@@ -1,108 +1,28 @@
 import { h } from "picodom"
 import "./browser.css"
+import file from "./file"
 
 export default {
   view: () => <div id="browser">
     <div class="section">
       <div class="header">
-        <div class="button">＋&#xFE0E;</div>
-        <div class="name"><div class="icon">►&#xFE0E;</div>Abc</div>
-      </div>
-      <div class="items">
-        <div class="item">
-          <div class="button">❌&#xFE0E;</div>
-          <div class="button">🖉&#xFE0E;</div>
-          <div class="name">Item</div>
-        </div>
-        <div class="item">
-          <div class="button">❌&#xFE0E;</div>
-          <div class="button">🖉&#xFE0E;</div>
-          <div class="name">Item</div>
-        </div>
-        <div class="item">
-          <div class="button">❌&#xFE0E;</div>
-          <div class="button">🖉&#xFE0E;</div>
-          <div class="name">Item</div>
-        </div>
-        <div class="active item">
-          <div class="button">❌&#xFE0E;</div>
-          <div class="button">🖉&#xFE0E;</div>
-          <div class="name">Item</div>
-        </div>
-        <div class="item">
-          <div class="button">❌&#xFE0E;</div>
-          <div class="button">🖉&#xFE0E;</div>
-          <div class="name">Item</div>
+        <div class="button" onclick={file.createSheet}>＋&#xFE0E;</div>
+        <div class="name" onclick={file.toggleSheets}>
+          {
+            file.current.sheets.expanded
+              ? <div class="icon">▼&#xFE0E;</div>
+              : <div class="icon">►&#xFE0E;</div>
+          }
+          Sheets
         </div>
       </div>
-    </div>
-    <div class="section">
-      <div class="header">
-        <div class="icon">►&#xFE0E;</div>
-        <div class="button">＋&#xFE0E;</div>
-        <div class="name">Abc</div>
-      </div>
-      <div class="items">
-        <div class="item">
+      {file.current.sheets.expanded && <div class="items">
+        {file.current.sheets.items.map(sheet => <div class="item">
           <div class="button">❌&#xFE0E;</div>
           <div class="button">🖉&#xFE0E;</div>
-          <div class="name">Item</div>
-        </div>
-        <div class="item">
-          <div class="button">❌&#xFE0E;</div>
-          <div class="button">🖉&#xFE0E;</div>
-          <div class="name">Item</div>
-        </div>
-        <div class="active item">
-          <div class="button">❌&#xFE0E;</div>
-          <div class="button">🖉&#xFE0E;</div>
-          <div class="name">Item</div>
-        </div>
-        <div class="item">
-          <div class="button">❌&#xFE0E;</div>
-          <div class="button">🖉&#xFE0E;</div>
-          <div class="name">Item</div>
-        </div>
-        <div class="item">
-          <div class="button">❌&#xFE0E;</div>
-          <div class="button">🖉&#xFE0E;</div>
-          <div class="name">Item</div>
-        </div>
-      </div>
-    </div>
-    <div class="section">
-      <div class="header">
-        <div class="icon">►&#xFE0E;</div>
-        <div class="button">＋&#xFE0E;</div>
-        <div class="name">Abc</div>
-      </div>
-      <div class="items">
-        <div class="item">
-          <div class="button">❌&#xFE0E;</div>
-          <div class="button">🖉&#xFE0E;</div>
-          <div class="name">Item</div>
-        </div>
-        <div class="item">
-          <div class="button">❌&#xFE0E;</div>
-          <div class="button">🖉&#xFE0E;</div>
-          <div class="name">Item</div>
-        </div>
-        <div class="item">
-          <div class="button">❌&#xFE0E;</div>
-          <div class="button">🖉&#xFE0E;</div>
-          <div class="name">Item</div>
-        </div>
-        <div class="item">
-          <div class="button">❌&#xFE0E;</div>
-          <div class="button">🖉&#xFE0E;</div>
-          <div class="name">Item</div>
-        </div>
-        <div class="item">
-          <div class="button">❌&#xFE0E;</div>
-          <div class="button">🖉&#xFE0E;</div>
-          <div class="name">Item</div>
-        </div>
-      </div>
+          <div class="name">{sheet.name}</div>
+        </div>)}
+      </div>}
     </div>
   </div>
 }
