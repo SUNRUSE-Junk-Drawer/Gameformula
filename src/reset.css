@@ -41,11 +41,19 @@ html {
 
 ::-webkit-scrollbar {
   width: 1rem;
-  background: rgba(255, 255, 255, 0.1);
+  background: #080808;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255 ,0.1);
+  background: #222;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #282828;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: #333;
 }
 
 button::-moz-focus-inner {
