@@ -1,3 +1,5 @@
 import "./reset.css"
 import "./miscellaneous.css"
-import refreshDom from "./refreshDom"
+import file from "./file"
+
+file.current = file.create()

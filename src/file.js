@@ -2,70 +2,75 @@ import sections from "./sections"
 import refreshDom from "./refreshDom.js"
 import history from "./history"
 
-function NewFile() {
-  const file = {
-    name: "Untitled Sheet"
-  }
-
-  sections.idsInOrder.forEach(id => file[id] = {
-    nextId: 1,
-    expanded: true,
-    items: []
-  })
-
-  return file
-}
-
 const exported = {
-  current: NewFile(),
+  current: null,
+  create: () => {
+    const file = {
+      name: "Untitled Sheet"
+    }
+
+    sections.idsInOrder.forEach(id => file[id] = {
+      nextId: 1,
+      expanded: true,
+      items: {}
+    })
+
+    return file
+  },
   createItem(sectionId) {
     let number = 1
     let name
     while (true) {
       name = `Untitled ${sections.byId[sectionId].singular} ${number}`
-      if (!exported.current[sectionId].items.some(item => item.name == name)) break
+      let unique = true
+      for (const key in exported.current[sectionId].items) {
+        if (exported.current[sectionId].items[key].name != name) continue
+        unique = false
+        break
+      }
+      if (unique) break
       number++
     }
 
     const itemId = exported.current[sectionId].nextId
-    const item = sections.byId[sectionId].create(itemId, name)
+    const item = sections.byId[sectionId].create(name)
     exported.current[sectionId].nextId++
 
     history.add(() => {
-      exported.current[sectionId].items.push(item)
+      exported.current[sectionId].items[itemId] = item
       exported.current[sectionId].expanded = true
       if (sections.byId[sectionId].focusable) {
         exported.current.focusedSection = sectionId
         exported.current.focusedItem = itemId
       }
     }, () => {
-      exported.current[sectionId].items.pop()
+      delete exported.current[sectionId].items[itemId]
       if (exported.current.focusedSection == sectionId && exported.current.focusedItem == itemId) {
         delete exported.current.focusedSection
         delete exported.current.focusedItem
       }
     })
   },
-  focusItem(sectionId, item) {
+  focusItem(sectionId, itemId) {
     exported.current.focusedSection = sectionId
-    exported.current.focusedItem = item.id
+    exported.current.focusedItem = itemId
     refreshDom()
   },
-  deleteItem(sectionId, item) {
-    const index = exported.current[sectionId].items.indexOf(item)
+  deleteItem(sectionId, itemId) {
+    const item = exported.current[sectionId].items[itemId]
     history.add(() => {
-      exported.current[sectionId].items.splice(index, 1)
+      delete exported.current[sectionId].items[itemId]
       exported.current[sectionId].expanded = true
-      if (exported.current.focusedSection == sectionId && exported.current.focusedItem == item.id) {
+      if (exported.current.focusedSection == sectionId && exported.current.focusedItem == itemId) {
         delete exported.current.focusedSection
         delete exported.current.focusedItem
       }
     }, () => {
-      exported.current[sectionId].items.splice(index, 0, item)
+      exported.current[sectionId].items[itemId] = item
       exported.current[sectionId].expanded = true
       if (sections.byId[sectionId].focusable) {
         exported.current.focusedSection = sectionId
-        exported.current.focusedItem = item.id
+        exported.current.focusedItem = itemId
       }
     })
   },
