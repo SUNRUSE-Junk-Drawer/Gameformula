@@ -92,7 +92,7 @@ body {
   padding-right: 0.5rem;
 }
 
-#browser .active.item .name, #browser .active.item:nth-child(even) .name {
+#browser .focused.item .name, #browser .focused.item:nth-child(even) .name {
   background: #141414;
   color: #FFF;
 }
@@ -101,12 +101,12 @@ body {
   background: #080808;
 }
 
-#browser .item .name:hover, #browser .active.item .name:hover {
+#browser .item .name:hover, #browser .focused.item .name:hover {
   background: #181818;
   color: #FFF;
 }
 
-#browser .item .name:active, #browser .active.item .name:active {
+#browser .item .name:active, #browser .focused.item .name:active {
   background: #222;
 }
 
