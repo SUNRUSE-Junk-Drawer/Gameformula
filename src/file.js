@@ -27,8 +27,8 @@ const exported = {
       number++
     }
 
-    const item = sections.byId[sectionId].create(exported.current[sectionId].id, name)
-    exported.current[sectionId].id++
+    const item = sections.byId[sectionId].create(exported.current[sectionId].nextId, name)
+    exported.current[sectionId].nextId++
 
     history.add(() => {
       exported.current[sectionId].items.push(item)
